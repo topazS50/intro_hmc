@@ -45,10 +45,10 @@ while (doIter):
     p = np.random.normal(scale=1.0)
     h = f(x) + 0.5 * p * p
     x_trial, p = molecdyn(x, p, dtau, nsteps, data_md)
+    x_reverse, p_reverse = molecdyn(x_trial, -p, dtau, nsteps, data_md)
     h_trial = f(x_trial) + 0.5 * p * p
     z = np.exp(- h)
     z_trial = np.exp(- h_trial)
-    # print "h" , h , h_trial
     if z_trial > z:
         x = x_trial
     else:
@@ -65,9 +65,7 @@ df_hmc = pd.DataFrame(data_md, columns=['step', 'x', 'x0', 'p'])
 df_hmc['f'] = df_hmc['x'].apply(f)
 df_hmc['k'] = df_hmc['p'].apply(lambda p: 0.5 * p * p)
 df_hmc['h'] = df_hmc['k'] + df_hmc['f']
-df_hmc.to_csv('hmc_md.csv', sep=' ')
-
-# print sequence[:100]
+df_hmc.to_csv('hmc_md_reverse.csv', sep=' ')
 
 estimate = (sequence*sequence).mean()
 print '<x^2>/<1>', estimate
