@@ -54,3 +54,7 @@ demonstration of leap frog integerator in clearer way
 HMC stands for Hybrid Monte Carlo or Hamiltonian Monte Carlo. (They are same.)
 
 Lattice field theory people uses 'Hybrid', machine learning people uses 'Hamiltonian'.
+
+Contact
+
+https://www.facebook.com/kenji.ogawa.5209
